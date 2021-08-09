@@ -1,6 +1,6 @@
  def scannerhome = tool 'sonar-scanner';
- 
-pipeline {
+
+node {
     agent any
     stages{
         stage('Sonar Scanner'){
