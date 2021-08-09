@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages{
-        stage('Sonar Scanner'){
+        steps('Sonar Scanner'){
         def scannerhome = tool 'sonar-scanner';
         withSonarQubeEnv('sonarqube'){
 
