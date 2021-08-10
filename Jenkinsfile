@@ -4,7 +4,10 @@ pipeline {
        stage('SQ Analysis')
         {
             steps{
-                sh "sonar-scanner -Dsonar.projectKey=demo-python -Dsonar.host.url=http://18.219.103.233:9000 -Dsonar.login=admin -Dsonar.password=qwerty"
+                withSonarQubeEnv('sonarqube'){
+                    sh "sonar-scanner -Dsonar.projectKey=demo-python -Dsonar.host.url=http://18.219.103.233:9000 -Dsonar.login=admin -Dsonar.password=qwerty"
+                }
+                
             }
             
         }
