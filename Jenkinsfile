@@ -8,6 +8,16 @@ pipeline {
             }
             
         }
-        
+        stage('Quality Gate')
+        {
+            sleep(10)
+            waitForQualityGate abortPipeline: true
         }
+        
+    }
+    post {
+        cleanup {
+            cleanWs()
+            }
+    }
 }
