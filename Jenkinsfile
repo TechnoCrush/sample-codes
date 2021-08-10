@@ -1,15 +1,16 @@
 pipeline {
-    agent { 
-        docker { 
-            image 'python:3.5.1' 
-            } 
-        }
-    
+    agent any 
     stages {
-        stage('build') {
+        stage('SCM Checkout'){
             steps {
-                sh 'python --version'
+                git 'https://github.com/buddy-works/simple-java-project.git'
             }
         }
-    }
+
+        stage('SQ Analysis')
+        {
+            sh "sonar-scanner -Dsonar.projectKey=demo-python -Dsonar.sources=. -Dsonar.host.url=http://18.219.103.233:9000 -Dsonar.login=admin"
+        }
+        
+        }
 }
